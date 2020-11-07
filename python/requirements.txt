@@ -1,0 +1,8 @@
+saspy
+notebook
+swat
+scikit-learn
+jupyterhub
+sas_kernel
+numpy
+scipy

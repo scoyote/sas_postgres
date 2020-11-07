@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+
+  db_pg:
+    image: postgres:platform
+    build:
+      context: ./postgres_build
+      dockerfile: Dockerfile-postgres
+    container_name: sas-postgres
+    volumes:
+      - ${PGDATAPATH}:/var/lib/postgresql/data/pgdata
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: Orion123
+      PGDATA: /var/lib/postgresql/data/pgdata
+      VIRTUAL_HOST: sasnet.postgres
+    networks:
+      - sasbridge
+
+  an_python:
+    image: scoyote/pythonswat:platform
+    build:
+      context: ./python
+      dockerfile: Dockerfile-python
+    container_name: python-swat
+    volumes:
+      - ${PLPATH}/platform_shared:/platform_shared
+    restart: unless-stopped
+    user: sas
+    command: /bin/bash -c "jupyter notebook --allow-root --notebook-dir=/shared --ip='*' --port=8888 --no-browser --NotebookApp.token=''"
+    ports:
+      - 8888:8888
+    environment:
+      VIRTUAL_HOST: sasnet.pythonswat
+    networks:
+      - sasbridge
+
+  an_r:
+    image: scoyote/rswat:platform
+    build:
+      context: ./rocker
+      dockerfile: Dockerfile-rocker
+    container_name: r-swat
+    volumes:
+      - ${PLPATH}/platform_shared:/platform_shared
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: sasnet.rswat
+    ports:
+      - 8787:8787
+    networks:
+      - sasbridge
+
+ sas-viya35:
+    image: registry.unx.sas.com/jaskal/viya35access:v2
+    container_name: sas-viya35PL
+    volumes:
+      - ${PLPATH}/platform_shared:/platform_shared          
+      - ${PLPATH}/SAS_Viya35/sasinside:/sasinside
+      - ${PLPATH}/SAS_Viya35/sasdemo:/data
+      - ${PLPATH}/SAS_Viya35/cas/data:/cas/data
+      - ${PLPATH}/SAS_Viya35/cas/cache:/cas/cache
+      - ${PLPATH}/SAS_Viya35/cas/permstore:/cas/permstore
+    ports:
+      - 5570:5570
+      - 8777:8777
+      - 2323:2323
+      - 8591:8591
+      - 38081:38080
+      - 2144:2144
+      - 8561:8561
+      - 41415:41415
+      - 38667:38667
+      - 45745:45745
+      - 41203:41203
+      - 8081:80
+      - 8443:443
+    environment:
+      VIRTUAL_HOST: sasnet.sasviya35PL
+    networks:
+      - sasbridge
+
+networks:
+    sasbridge:
+        driver: bridge
+
+

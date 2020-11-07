@@ -1,0 +1,22 @@
+FROM jupyterhub/jupyterhub
+
+WORKDIR /shared
+COPY requirements.txt ./
+ARG USER=sas
+ARG UID=1141
+ARG GID=1141
+ARG PW=Orion123
+RUN apt-get update -y \
+    && apt-get install -y sudo \
+    && useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd \
+    && usermod -aG sudo sas \
+    && su sas \
+    && sudo apt-get -y install openjdk-8-jdk \
+    && sudo apt-get -y install python3-pip \
+    && sudo pip3 install --upgrade pip \
+    && sudo pip3 install --no-cache-dir -r requirements.txt 
+EXPOSE 8888
+#This copy is not future proof. This folder is dependent on wherer saspy installs...
+COPY sascfg.py //usr/local/lib/python3.8/dist-packages/saspy/
+
+
