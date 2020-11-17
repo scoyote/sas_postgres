@@ -15,9 +15,13 @@ https://www.postgresqltutorial.com/postgresql-sample-database/
 
 Ports: 
   8081 - SAS Studio V
+  
   8787 - RStudio
+  
   8888 - Jupyter Hub
+  
   5432 - Postgres
+  
   
   
 Loading the DVD Rental database (tar downloaded in build process):
