@@ -1,4 +1,4 @@
-# sas_postgres
+# Containers
 Docker compose platform for using Postgres backend to SAS
 
 This docker compose cluster is configured to set up 
