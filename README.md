@@ -22,6 +22,7 @@ Ports:
   
 Loading the DVD Rental database (tar downloaded in build process):
 
+```
 $ docker exec -it postgres-sas /bin/bash
  
   postgres-# \l
@@ -108,3 +109,4 @@ dvdrental=# select * from actor limit 2;
 (2 rows)
 
 dvdrental=# exit;
+```
