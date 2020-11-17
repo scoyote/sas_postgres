@@ -3,16 +3,18 @@ version: '3.8'
 services:
 
   db_pg:
-    image: postgres:platform
+    image: postgres
     build:
       context: ./postgres_build
-      dockerfile: Dockerfile-postgres
-    container_name: sas-postgres
+      dockerfile: Dockerfile
+    container_name: postgres-sas
     volumes:
-      - ${PGDATAPATH}:/var/lib/postgresql/data/pgdata
+      - ${PLPATH}/postgres_data:/var/lib/postgresql/data/pgdata
     restart: always
     ports:
       - 5432:5432
+    # command:
+    #   - ${PLPATH}/postgres_build/checkandinstall.sh
     environment:
       POSTGRES_PASSWORD: Orion123
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -54,7 +56,7 @@ services:
     networks:
       - sasbridge
 
- sas-viya35:
+  sas-viya35:
     image: registry.unx.sas.com/jaskal/viya35access:v2
     container_name: sas-viya35PL
     volumes:
