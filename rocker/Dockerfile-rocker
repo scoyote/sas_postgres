@@ -1,9 +1,9 @@
 FROM rocker/rstudio:latest
 COPY R-swat-1.5.0-linux64.tar.gz .
-ARG USER=sas
+ARG USER=sasdemo
 ARG UID=1141
 ARG GID=1141
-ARG PW=Orion123
+ARG PW=sasdemo
 RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd \
     && apt-get install -y numactl \
     && R -e 'install.packages(c("plumber","httr", "jsonlite", "dplyr", "stringr", "here"))' \
