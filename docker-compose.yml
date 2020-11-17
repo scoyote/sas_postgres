@@ -61,11 +61,11 @@ services:
     container_name: sas-viya35PL
     volumes:
       - ${PLPATH}/platform_shared:/platform_shared          
-      - ${PLPATH}/SAS_Viya35/sasinside:/sasinside
-      - ${PLPATH}/SAS_Viya35/sasdemo:/data
-      - ${PLPATH}/SAS_Viya35/cas/data:/cas/data
-      - ${PLPATH}/SAS_Viya35/cas/cache:/cas/cache
-      - ${PLPATH}/SAS_Viya35/cas/permstore:/cas/permstore
+      - ${PLPATH}/platform_shared/SAS_Viya35/sasinside:/sasinside
+      - ${PLPATH}/platform_shared/SAS_Viya35/sasdemo:/data
+      - ${PLPATH}/platform_shared/SAS_Viya35/cas/data:/cas/data
+      - ${PLPATH}/platform_shared/SAS_Viya35/cas/cache:/cas/cache
+      - ${PLPATH}/platform_shared/SAS_Viya35/cas/permstore:/cas/permstore
     ports:
       - 5570:5570
       - 8777:8777
