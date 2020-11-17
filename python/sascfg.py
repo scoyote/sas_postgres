@@ -25,6 +25,6 @@ SAS_output_options = {'output' : 'html5'}       # not required unless changing a
 
 
 sas94 = {'java'      : '/usr/bin/java',
-            'iomhost'   : 'sas-94',
+            'iomhost'   : 'sas-viya35PL',
             'iomport'   : 8591,
             }           

@@ -32,7 +32,7 @@ services:
       - ${PLPATH}/platform_shared:/platform_shared
     restart: unless-stopped
     user: sas
-    command: /bin/bash -c "jupyter notebook --allow-root --notebook-dir=/shared --ip='*' --port=8888 --no-browser --NotebookApp.token=''"
+    command: /bin/bash -c "jupyter notebook --allow-root --notebook-dir=/platform_shared --ip='*' --port=8888 --no-browser --NotebookApp.token=''"
     ports:
       - 8888:8888
     environment:
