@@ -135,6 +135,6 @@ SAS Libname for the dvdrental database:
 ```
 libname pg_dvd postgres 
 	server='postgres-sas' port=5432 
-   	user='postgres' password='Orion123'
+   	user='postgres' password='Xxxxx123'
    	database=dvdrental	;
 ```
