@@ -13,6 +13,7 @@ Additionally, the Postgres DVD Rental database can be downloaded from here:
 https://www.postgresqltutorial.com/postgresql-sample-database/
 
 Steps to Install:
+
 0)  Sign into the vpn so Jacob's container can be pulled
 
 1)	Clone the repository https://github.com/scoyote/sas_postgres
@@ -28,6 +29,7 @@ Steps to Install:
 6)  Normally shut down using ```docker-compose down```
 
 Ports: 
+
   8081 - SAS Studio V
   
   8787 - RStudio
