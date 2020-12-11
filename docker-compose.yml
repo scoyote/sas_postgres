@@ -60,7 +60,8 @@ services:
     image: registry.unx.sas.com/jaskal/viya35access:v2
     container_name: sas-viya35PL
     volumes:
-      - ${PLPATH}/platform_shared:/platform_shared          
+      #- ${PLPATH}/Documents/repositories/:/repositories/
+      - ${PLPATH}/platform_shared:/platform_shared       
       - ${PLPATH}/platform_shared/SAS_Viya35/sasinside:/sasinside
       - ${PLPATH}/platform_shared/SAS_Viya35/sasdemo:/data
       - ${PLPATH}/platform_shared/SAS_Viya35/cas/data:/cas/data
