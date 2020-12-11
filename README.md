@@ -12,6 +12,20 @@ The addendum directory contains the tar file with the DVD rental database and th
 Additionally, the Postgres DVD Rental database can be downloaded from here:
 https://www.postgresqltutorial.com/postgresql-sample-database/
 
+Steps to Install:
+0)  Sign into the vpn so Jacob's container can be pulled
+
+1)	Clone the repository https://github.com/scoyote/sas_postgres
+
+2)	Set PLPATH to a permanent path 
+
+3)	Run ```docker-compose build```
+
+4)	Run ```docker-compose up```, look for the following from the postgres container: 
+    ```postgres-sas  | 2020-12-11 17:18:00.664 UTC [1] LOG:  database system is ready to accept connection```
+   
+5)  Normally start up using ```docker-compose up -d```
+6)  Normally shut down using ```docker-compose down```
 
 Ports: 
   8081 - SAS Studio V
