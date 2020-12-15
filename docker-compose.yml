@@ -57,7 +57,7 @@ services:
       - sasbridge
 
   sas-viya35:
-    image: registry.unx.sas.com/jaskal/viya35access:v2
+    image: registry.unx.sas.com/jaskal/viya35access:v1
     container_name: sas-viya35PL
     volumes:
       #- ${PLPATH}/Documents/repositories/:/repositories/
